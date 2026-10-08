@@ -1,0 +1,12 @@
+{
+  "background": {
+    "file": "assets/background.jpg",
+    "sha256": "d0e94867bfa1a2fb4cb81c56b479024aa97ee91e7464f2498d1b54bfcdd7a544",
+    "original": "Post Template (3).jpg"
+  },
+  "logo": {
+    "file": "assets/oculon-logo.png",
+    "sha256": "e839f07bc6c5bd259cdb472243c58ce865eb0da1723210752e89fa6207baf03a",
+    "original": "Frame 1437254059 (1).png"
+  }
+}

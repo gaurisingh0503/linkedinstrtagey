@@ -35,7 +35,7 @@ trails are capped at 1.6 pixels and do not filter or duplicate the logo.
   deceleration, entrance, stack motion, visible-card count, and final hold.
 - `src/shipping/FeatureNotification.tsx`: reusable official-brand glass card.
 - `src/shipping/NotificationStream.tsx`: deterministic frame-based spring
-  entrances and shared vertical displacement. Card separation is always
+  entrances and shared vertical displacement along a continuous, monotone cubic scroll path. Scroll velocity stays continuous at arrivals instead of restarting for each card. Card separation is always
   card height plus gap, including during overlapping movement intervals.
 - `src/shipping/ShippingVideo.tsx`: static background and notifications only.
 - `scripts/validate-brand.cjs`: validates file availability and basic format,
@@ -85,3 +85,14 @@ and Version B are previous explorations.
 
 Final export verified: H.264, 1080 × 1920, 60 fps, 1061 frames,
 17.683333 seconds. Full-file FFmpeg decoding passed. The MP4 is silent.
+
+## Scrolling revision 2
+
+Smaller 56-pixel logo tiles and lighter glass surfaces follow the uploaded motion
+reference. The feed now moves on one continuous scroll track with smooth velocity
+through arrival points and zero velocity at the final hold. All 49 features and
+original asset hashes are retained. Export this revision with:
+
+```bash
+npm run render:shipping -- out/oculon-shipping-scroll-v2.mp4
+```

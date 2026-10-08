@@ -15,7 +15,8 @@ const { features } = load("src/data/features.ts");
 const { animation, createSchedule } = load("src/shipping/config.ts");
 const duration =
   createSchedule(features.length).durationInFrames / animation.fps;
-fs.mkdirSync("out", { recursive: true });
+const output = process.argv[2] ?? "out/oculon-shipping-glass.mp4";
+fs.mkdirSync(path.dirname(output), { recursive: true });
 run("npx", [
   "remotion",
   "render",
@@ -39,17 +40,9 @@ run("ffmpeg", [
   "copy",
   "-movflags",
   "+faststart",
-  "out/oculon-shipping-glass.mp4",
+  output,
 ]);
-run("ffmpeg", [
-  "-v",
-  "error",
-  "-i",
-  "out/oculon-shipping-glass.mp4",
-  "-f",
-  "null",
-  "-",
-]);
+run("ffmpeg", ["-v", "error", "-i", output, "-f", "null", "-"]);
 run("ffprobe", [
   "-v",
   "error",
@@ -59,5 +52,5 @@ run("ffprobe", [
   "format=duration",
   "-of",
   "json",
-  "out/oculon-shipping-glass.mp4",
+  output,
 ]);

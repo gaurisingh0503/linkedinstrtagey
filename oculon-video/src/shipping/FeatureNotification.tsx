@@ -28,7 +28,7 @@ export const FeatureNotification = ({
           marginBottom: 10,
         }}
       >
-        OCULON
+        OCULON · PRODUCT UPDATE
       </div>
       <div
         style={{
@@ -63,9 +63,9 @@ export const FeatureNotification = ({
         border: "1px solid rgba(255,255,255,.13)",
         borderTopColor: "rgba(255,255,255,.22)",
         background:
-          "linear-gradient(135deg,rgba(255,255,255,.11),rgba(255,255,255,.035))",
-        backdropFilter: "blur(24px) saturate(140%)",
-        WebkitBackdropFilter: "blur(24px) saturate(140%)",
+          "linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.02))",
+        backdropFilter: "blur(24px) saturate(160%)",
+        WebkitBackdropFilter: "blur(24px) saturate(160%)",
         boxShadow:
           "0 12px 40px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.12)",
         display: "flex",
@@ -81,8 +81,8 @@ export const FeatureNotification = ({
           height: animation.logoHeight,
           flexShrink: 0,
           backgroundColor: "rgba(255,255,255,.82)",
-          borderRadius: 12,
-          padding: 6,
+          borderRadius: 10,
+          padding: 4,
           boxSizing: "border-box",
           display: "flex",
           alignItems: "center",

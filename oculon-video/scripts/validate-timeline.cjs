@@ -50,6 +50,32 @@ for (let frame = 0; frame < schedule.durationInFrames; frame++) {
     );
   }
 }
+// A scrolling feed must not pause or jump when a new notification arrives.
+let maximumVelocityJump = 0;
+for (const knot of schedule.arrivals.map(
+  (f) => f + Math.ceil(animation.entranceDuration * animation.fps),
+)) {
+  const epsilon = 0.01;
+  const left =
+    (stackShift(knot, schedule.arrivals, animation.fps) -
+      stackShift(knot - epsilon, schedule.arrivals, animation.fps)) /
+    epsilon;
+  const right =
+    (stackShift(knot + epsilon, schedule.arrivals, animation.fps) -
+      stackShift(knot, schedule.arrivals, animation.fps)) /
+    epsilon;
+  maximumVelocityJump = Math.max(maximumVelocityJump, Math.abs(left - right));
+}
+assert.ok(
+  maximumVelocityJump < 0.002,
+  "Scroll velocity must remain continuous through arrivals",
+);
+for (let frame = 1; frame < schedule.durationInFrames; frame++)
+  assert.ok(
+    stackShift(frame, schedule.arrivals, animation.fps) >=
+      stackShift(frame - 1, schedule.arrivals, animation.fps) - 1e-10,
+    "Scroll must never reverse",
+  );
 const holdStart =
   schedule.durationInFrames - Math.ceil(animation.finalHold * animation.fps);
 assert.equal(

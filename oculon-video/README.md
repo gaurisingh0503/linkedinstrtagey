@@ -1,6 +1,7 @@
 # Oculon — product shipping animation
 
-The current video is **Oculon-Shipping-Glass**: all 49 exact features, official
+The latest export is [Scrolling revision 2](out/oculon-shipping-scroll-v2.mp4).
+The current composition is **Oculon-Shipping-Glass**: all 49 exact features, official
 uploaded brand assets, frosted-glass scrolling notifications, 1080 × 1920,
 60 fps, 17.68 seconds. See [SHIPPING.md](SHIPPING.md) for configuration,
 asset provenance, preview, and export instructions.

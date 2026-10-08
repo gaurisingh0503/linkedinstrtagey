@@ -1,98 +1,76 @@
-# Oculon — official-brand notification stream
+# Oculon — short iPhone-style scrolling section
 
-This updated composition follows the latest brief: vertical 1080 × 1920, 60 fps,
-49 exact features, a quiet opening, accelerating frosted-glass notifications,
-controlled deceleration, and a held final stack. No Slack branding, end card,
-count reveal, or closing slogan is included in this composition.
+Current revision: **9.8 seconds**, 1080 × 1920, 60 fps, 588 frames, H.264.
+All 49 exact feature titles appear in their supplied order. The stream starts
+slowly and accelerates to 12 updates per second. It ends at full scrolling
+speed for a later transition. There is no slowdown, final hold, end card,
+count reveal, or slogan. The video is silent.
 
 ## Original brand assets
-
-The files supplied in `videoo.zip` are copied byte-for-byte:
 
 - `Post Template (3).jpg` → `public/assets/background.jpg` (2160 × 2700).
 - `Frame 1437254059 (1).png` → `public/assets/oculon-logo.png` (874 × 665, RGBA).
 
-Original hashes are recorded in `public/assets/brand-originals.json` and enforced
-by the export preflight. The entire supplied logo artwork, including its small
-secondary mark, is preserved. No crop, filter, recolor, redraw, or geometry
-change is applied. The dark artwork sits on a light translucent tile for contrast
-and uses `object-fit: contain` in every notification.
+Both files are byte-for-byte copies of the uploaded ZIP contents. Their hashes
+are recorded in `public/assets/brand-originals.json` and checked before export.
+The static background uses cover with left/top alignment, retaining the mark
+embedded in its upper-left corner.
 
-The background is static with `object-fit: cover` and left/top alignment. Its
-4:5 aspect ratio requires horizontal cropping to fill the 9:16 output. Left
-alignment retains the embedded upper-left brand mark. No gradients, recoloring,
-zoom, parallax, or image editing are applied to the background.
+Following the user's latest request to show only the large logo, the notification
+uses a CSS viewport containing the original artwork's 584 × 665 primary mark.
+The secondary miniature mark in the PNG is outside that viewport. The file,
+primary mark's geometry, colors, and transparency are unchanged. No redraw or
+filter is applied. Do not restore the secondary miniature mark in notifications.
 
-Inter fonts are local and licensed. The glass uses native Chromium backdrop
-blur/saturation and translucent highlights. Subtle velocity-dependent text
-trails are capped at 1.6 pixels and do not filter or duplicate the logo.
+Cards borrow the supplied iPhone notification reference's rounded corners,
+light translucent glass, dark typography, compact brand heading, and soft
+shadow. No phone frame, wallpaper, real people, or timestamps are added.
+Inter fonts are local with their license under `public/assets`.
 
-## Files
+## Edit and preview
 
-- `src/data/features.ts`: complete editable dataset with stable IDs and optional
-  short titles. Categories are metadata, never separate animated sections.
-- `src/shipping/config.ts`: asset paths, sizing, arrival timing, acceleration,
-  deceleration, entrance, stack motion, visible-card count, and final hold.
-- `src/shipping/FeatureNotification.tsx`: reusable official-brand glass card.
-- `src/shipping/NotificationStream.tsx`: deterministic frame-based spring
-  entrances and shared vertical displacement along a continuous, monotone cubic scroll path. Scroll velocity stays continuous at arrivals instead of restarting for each card. Card separation is always
-  card height plus gap, including during overlapping movement intervals.
-- `src/shipping/ShippingVideo.tsx`: static background and notifications only.
-- `scripts/validate-brand.cjs`: validates file availability and basic format,
-  records hashes and PNG dimensions. Missing originals cause a nonzero exit.
-- `scripts/validate-timeline.cjs`: checks dataset completeness, arrival order,
-  acceleration/deceleration, constant card spacing, final hold, and growth of
-  duration when features are added.
-- `scripts/render-shipping.cjs`: asset-gated MP4 export and decode verification.
+- `src/data/features.ts`: all 49 exact labels, stable IDs, metadata categories.
+- `src/shipping/config.ts`: timing, acceleration, sizing, and asset paths.
+- `src/shipping/FeatureNotification.tsx`: notification material and brand layout.
+- `src/shipping/NotificationStream.tsx`: frame-driven entrances and row positions.
+- `src/shipping/ShippingVideo.tsx`: static background and animated feed only.
 
-Inter is bundled locally under `public/assets` with its license. Existing
-landscape compositions are retained as previous versions; select the new
-composition for this brief.
-
-## Commands
+One monotone cubic scroll track moves every row together, preserving spacing
+and velocity continuity. Its endpoint continues linearly at full speed so the
+video can cut directly into a future transition. Duration grows automatically
+when the feature list changes; entries are never silently dropped.
 
 ```bash
 cd /workspace/linkedinstrtagey/oculon-video
 npm ci
 npm run dev -- --no-open
+```
+
+Select **Oculon-Shipping-Glass**. Previous compositions/exports remain as earlier
+explorations. The cloud onboarding UI does not expose localhost previews.
+
+## Validate and export
+
+```bash
 npm run lint
 npm run validate:shipping
 npm run validate:brand
 npm run build
-npm run render:shipping
+npm run render:shipping -- out/oculon-shipping-ios-v3.mp4
 ```
 
-Choose **Oculon-Shipping-Glass** in Studio. Duration is calculated from the full
-feature list; adding entries extends the composition. The default timeline is
-17.68 seconds (1061 frames at 60 fps). The updated brief does not require sound; this new
-composition is silent.
+Timeline validation checks dataset/category completeness, strictly increasing
+arrivals, frequency that never slows down, continuous forward scrolling,
+constant card spacing, nonzero final speed, and automatic duration growth.
+Asset validation checks availability, formats, and original hashes. The export
+script verifies full-file decoding and reports output metadata.
 
-Before final rendering, inspect stills at frames 90 (beginning), 420 (building),
-900 (avalanche), and the final frame reported by `validate:shipping`. Use:
+Representative frames: 80 (beginning), 260 (building), 500 (peak), 587 (last).
+For example:
 
 ```bash
-npx remotion still src/index.ts Oculon-Shipping-Glass out/shipping-peak.png --frame=720 --browser-executable=/usr/bin/chromium
+npx remotion still src/index.ts Oculon-Shipping-Glass out/ios-peak.png --frame=500 --browser-executable=/usr/bin/chromium
 ```
 
-Check actual logo contrast and unchanged proportions, background framing,
-glass transparency, text overflow, and consistent placement. If a long label
-does not fit, use an approved short title while retaining the full original in
-the dataset. `render:shipping` writes `out/oculon-shipping-glass.mp4`.
-
-Brand assets, timeline, TypeScript, lint, bundling, and representative frames
-have been validated. This composition is the current brief; landscape Version A
-and Version B are previous explorations.
-
-Final export verified: H.264, 1080 × 1920, 60 fps, 1061 frames,
-17.683333 seconds. Full-file FFmpeg decoding passed. The MP4 is silent.
-
-## Scrolling revision 2
-
-Smaller 56-pixel logo tiles and lighter glass surfaces follow the uploaded motion
-reference. The feed now moves on one continuous scroll track with smooth velocity
-through arrival points and zero velocity at the final hold. All 49 features and
-original asset hashes are retained. Export this revision with:
-
-```bash
-npm run render:shipping -- out/oculon-shipping-scroll-v2.mp4
-```
+Check single primary logo, card contrast, frosted material, text fit, spacing,
+and safe horizontal bounds. The final frame should still show fast scrolling.

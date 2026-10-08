@@ -1,9 +1,9 @@
 # Oculon — product shipping animation
 
-The latest export is [Scrolling revision 2](out/oculon-shipping-scroll-v2.mp4).
+The latest export is [Short iPhone-style revision 3](out/oculon-shipping-ios-v3.mp4).
 The current composition is **Oculon-Shipping-Glass**: all 49 exact features, official
-uploaded brand assets, frosted-glass scrolling notifications, 1080 × 1920,
-60 fps, 17.68 seconds. See [SHIPPING.md](SHIPPING.md) for configuration,
+uploaded brand assets, iPhone-style frosted notifications with continuous accelerating scrolling, 1080 × 1920,
+60 fps, 9.8 seconds. See [SHIPPING.md](SHIPPING.md) for configuration,
 asset provenance, preview, and export instructions.
 
 ```bash

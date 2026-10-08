@@ -13,8 +13,8 @@ assert.equal(schedule.arrivals.length, features.length);
 for (let i = 1; i < schedule.arrivals.length; i++)
   assert.ok(schedule.arrivals[i] > schedule.arrivals[i - 1]);
 assert.ok(
-  schedule.durationInFrames / animation.fps <= 18,
-  "Default 49-feature timeline fits the brief",
+  schedule.durationInFrames / animation.fps <= 11,
+  "Short scrolling section fits the requested trim",
 );
 const expectedCounts = {
   Comparisons: 7,
@@ -36,8 +36,11 @@ const intervals = schedule.arrivals
 assert.ok(Math.min(...intervals) / animation.fps >= animation.minimumInterval);
 assert.ok(intervals[0] > intervals[15]);
 assert.ok(intervals[15] > intervals[26]);
-assert.ok(intervals.at(-1) > intervals.at(-2));
-assert.ok(intervals.at(-2) > intervals.at(-3));
+for (let i = 1; i < intervals.length; i++)
+  assert.ok(
+    intervals[i] <= intervals[i - 1],
+    "Arrival frequency must never slow down",
+  );
 const step = animation.cardHeight + animation.cardGap;
 for (let frame = 0; frame < schedule.durationInFrames; frame++) {
   const shift = stackShift(frame, schedule.arrivals, animation.fps);
@@ -76,16 +79,15 @@ for (let frame = 1; frame < schedule.durationInFrames; frame++)
       stackShift(frame - 1, schedule.arrivals, animation.fps) - 1e-10,
     "Scroll must never reverse",
   );
-const holdStart =
-  schedule.durationInFrames - Math.ceil(animation.finalHold * animation.fps);
-assert.equal(
-  stackShift(holdStart, schedule.arrivals, animation.fps),
-  features.length - 1,
+const end = schedule.durationInFrames - 1;
+assert.ok(
+  stackShift(end, schedule.arrivals, animation.fps) > features.length - 1,
+  "Keep scrolling past the last arrival",
 );
-assert.equal(
-  stackShift(schedule.durationInFrames - 1, schedule.arrivals, animation.fps),
-  features.length - 1,
-);
+const endingSpeed =
+  stackShift(end, schedule.arrivals, animation.fps) -
+  stackShift(end - 1, schedule.arrivals, animation.fps);
+assert.ok(endingSpeed > 0.1, "No slowdown or final hold");
 assert.ok(
   createSchedule(features.length + 1).durationInFrames >
     schedule.durationInFrames,

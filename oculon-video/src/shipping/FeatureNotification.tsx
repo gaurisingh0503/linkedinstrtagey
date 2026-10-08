@@ -23,25 +23,25 @@ export const FeatureNotification = ({
         style={{
           fontSize: 15,
           fontWeight: 600,
-          letterSpacing: 2.1,
-          color: "rgba(255,255,255,.64)",
+          letterSpacing: 0.8,
+          color: "rgba(22,20,28,.56)",
           marginBottom: 10,
         }}
       >
-        OCULON · PRODUCT UPDATE
+        OCULON
       </div>
       <div
         style={{
           fontSize: animation.titleFontSize,
           fontWeight: 600,
           letterSpacing: -0.5,
-          color: "#FFFFFF",
+          color: "#16141C",
           whiteSpace: "nowrap",
           lineHeight: 1.2,
         }}
       >
         {title}{" "}
-        <span style={{ fontWeight: 400, color: "rgba(255,255,255,.66)" }}>
+        <span style={{ fontWeight: 400, color: "rgba(22,20,28,.62)" }}>
           shipped
         </span>
       </div>
@@ -60,14 +60,14 @@ export const FeatureNotification = ({
         translate: `${x}px 0`,
         opacity,
         borderRadius: animation.cardRadius,
-        border: "1px solid rgba(255,255,255,.13)",
-        borderTopColor: "rgba(255,255,255,.22)",
+        border: "1px solid rgba(255,255,255,.3)",
+        borderTopColor: "rgba(255,255,255,.55)",
         background:
-          "linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.02))",
-        backdropFilter: "blur(24px) saturate(160%)",
-        WebkitBackdropFilter: "blur(24px) saturate(160%)",
+          "linear-gradient(115deg,rgba(251,239,249,.82),rgba(235,231,249,.68) 52%,rgba(220,234,248,.60))",
+        backdropFilter: "blur(32px) saturate(150%)",
+        WebkitBackdropFilter: "blur(32px) saturate(150%)",
         boxShadow:
-          "0 12px 40px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.12)",
+          "0 8px 26px rgba(0,0,0,.13),inset 0 1px 0 rgba(255,255,255,.35)",
         display: "flex",
         alignItems: "center",
         gap: 24,
@@ -77,12 +77,11 @@ export const FeatureNotification = ({
     >
       <div
         style={{
+          position: "relative",
           width: animation.logoWidth,
           height: animation.logoHeight,
           flexShrink: 0,
-          backgroundColor: "rgba(255,255,255,.82)",
-          borderRadius: 10,
-          padding: 4,
+          overflow: "hidden",
           boxSizing: "border-box",
           display: "flex",
           alignItems: "center",
@@ -91,7 +90,17 @@ export const FeatureNotification = ({
       >
         <Img
           src={staticFile(brandAssets.logo)}
-          style={{ width: "100%", height: "100%", objectFit: "contain" }}
+          // User requested only the large mark. The original PNG stays
+          // unchanged; its 584x665 primary mark is isolated with a viewport.
+          style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            height: animation.logoHeight,
+            width: (animation.logoHeight * 874) / 665,
+            maxWidth: "none",
+            objectFit: "contain",
+          }}
         />
       </div>
       <div style={{ position: "relative", flex: 1, minWidth: 0 }}>
@@ -115,7 +124,7 @@ export const FeatureNotification = ({
         style={{
           fontSize: 22,
           lineHeight: 1,
-          color: "rgba(255,255,255,.3)",
+          color: "rgba(22,20,28,.32)",
           alignSelf: "flex-start",
           marginTop: 1,
         }}

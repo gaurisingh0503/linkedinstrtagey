@@ -1,8 +1,8 @@
 # Oculon — product shipping animation
 
-The latest export is [Short iPhone-style revision 3](out/oculon-shipping-glass-v4.mp4).
+The latest export is [GIF-reference Remotion revision 5](out/oculon-remotion-reference-v5.mp4).
 The current composition is **Oculon-Shipping-Glass**: all 49 exact features, official
-uploaded brand assets, iPhone-style frosted notifications with continuous accelerating scrolling, 1080 × 1920,
+uploaded brand assets, clear frosted notifications matched to the supplied scrolling GIF with continuous accelerating scrolling, 1080 × 1920,
 60 fps, 9.8 seconds. See [SHIPPING.md](SHIPPING.md) for configuration,
 asset provenance, preview, and export instructions.
 
@@ -67,4 +67,4 @@ ffmpeg -i out/oculon-version-b.mp4 -t 12 -c:v copy -c:a aac -b:a 192k -movflags 
 Verify those outputs before replacing the original exports. The delivered MP4s
 have already been finalized and fully decoded without errors.
 
-The current glass revision uses only 8–16% tinted fill, a 24px backdrop blur, subtle borders, and light text, allowing the original background to show through the cards.
+The current glass revision uses only 2.5–7.5% tinted fill, an 18px backdrop blur, subtle borders, and light text, allowing the original background to show through the cards.

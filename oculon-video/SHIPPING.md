@@ -1,4 +1,4 @@
-# Oculon — short iPhone-style scrolling section
+# Oculon — GIF-reference scrolling section
 
 Current revision: **9.8 seconds**, 1080 × 1920, 60 fps, 588 frames, H.264.
 All 49 exact feature titles appear in their supplied order. The stream starts
@@ -13,8 +13,8 @@ count reveal, or slogan. The video is silent.
 
 Both files are byte-for-byte copies of the uploaded ZIP contents. Their hashes
 are recorded in `public/assets/brand-originals.json` and checked before export.
-The static background uses cover with left/top alignment, retaining the mark
-embedded in its upper-left corner.
+The static background uses cover with right/top alignment to keep its purple
+and blue gradient visible behind the glass cards. The original image is unchanged.
 
 Following the user's latest request to show only the large logo, the notification
 uses a CSS viewport containing the original artwork's 584 × 665 primary mark.
@@ -22,9 +22,9 @@ The secondary miniature mark in the PNG is outside that viewport. The file,
 primary mark's geometry, colors, and transparency are unchanged. No redraw or
 filter is applied. Do not restore the secondary miniature mark in notifications.
 
-Cards borrow the supplied iPhone notification reference's rounded corners,
-light translucent glass, dark typography, compact brand heading, and soft
-shadow. No phone frame, wallpaper, real people, or timestamps are added.
+Cards follow the supplied scrolling GIF: compact rounded rectangles, very
+clear frosted glass, light typography, a compact brand heading, and thin edges.
+A subtle pale backing behind the unchanged dark logo keeps the primary mark visible. No phone frame, wallpaper, real people, or timestamps are added.
 Inter fonts are local with their license under `public/assets`.
 
 ## Edit and preview
@@ -56,7 +56,7 @@ npm run lint
 npm run validate:shipping
 npm run validate:brand
 npm run build
-npm run render:shipping -- out/oculon-shipping-glass-v4.mp4
+npm run render:shipping -- out/oculon-remotion-reference-v5.mp4
 ```
 
 Timeline validation checks dataset/category completeness, strictly increasing
@@ -75,4 +75,4 @@ npx remotion still src/index.ts Oculon-Shipping-Glass out/ios-peak.png --frame=5
 Check single primary logo, card contrast, frosted material, text fit, spacing,
 and safe horizontal bounds. The final frame should still show fast scrolling.
 
-The current glass revision uses only 8–16% tinted fill, a 24px backdrop blur, subtle borders, and light text, allowing the original background to show through the cards.
+The current glass revision uses only 2.5–7.5% tinted fill, an 18px backdrop blur, subtle borders, and light text, allowing the original background to show through the cards.

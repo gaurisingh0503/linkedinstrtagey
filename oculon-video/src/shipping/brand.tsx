@@ -21,7 +21,7 @@ export const Background = () => (
         width: "100%",
         height: "100%",
         objectFit: "cover",
-        objectPosition: "left top",
+        objectPosition: "right top",
       }}
     />
   </AbsoluteFill>

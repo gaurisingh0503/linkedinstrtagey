@@ -56,7 +56,7 @@ npm run lint
 npm run validate:shipping
 npm run validate:brand
 npm run build
-npm run render:shipping -- out/oculon-shipping-ios-v3.mp4
+npm run render:shipping -- out/oculon-shipping-glass-v4.mp4
 ```
 
 Timeline validation checks dataset/category completeness, strictly increasing
@@ -74,3 +74,5 @@ npx remotion still src/index.ts Oculon-Shipping-Glass out/ios-peak.png --frame=5
 
 Check single primary logo, card contrast, frosted material, text fit, spacing,
 and safe horizontal bounds. The final frame should still show fast scrolling.
+
+The current glass revision uses only 8–16% tinted fill, a 24px backdrop blur, subtle borders, and light text, allowing the original background to show through the cards.

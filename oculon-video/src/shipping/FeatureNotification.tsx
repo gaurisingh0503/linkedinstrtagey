@@ -24,7 +24,7 @@ export const FeatureNotification = ({
           fontSize: 15,
           fontWeight: 600,
           letterSpacing: 0.8,
-          color: "rgba(22,20,28,.56)",
+          color: "rgba(255,255,255,.64)",
           marginBottom: 10,
         }}
       >
@@ -35,13 +35,13 @@ export const FeatureNotification = ({
           fontSize: animation.titleFontSize,
           fontWeight: 600,
           letterSpacing: -0.5,
-          color: "#16141C",
+          color: "#F8F6FC",
           whiteSpace: "nowrap",
           lineHeight: 1.2,
         }}
       >
         {title}{" "}
-        <span style={{ fontWeight: 400, color: "rgba(22,20,28,.62)" }}>
+        <span style={{ fontWeight: 400, color: "rgba(255,255,255,.7)" }}>
           shipped
         </span>
       </div>
@@ -60,14 +60,14 @@ export const FeatureNotification = ({
         translate: `${x}px 0`,
         opacity,
         borderRadius: animation.cardRadius,
-        border: "1px solid rgba(255,255,255,.3)",
-        borderTopColor: "rgba(255,255,255,.55)",
+        border: "1px solid rgba(255,255,255,.13)",
+        borderTopColor: "rgba(255,255,255,.22)",
         background:
-          "linear-gradient(115deg,rgba(251,239,249,.82),rgba(235,231,249,.68) 52%,rgba(220,234,248,.60))",
-        backdropFilter: "blur(32px) saturate(150%)",
-        WebkitBackdropFilter: "blur(32px) saturate(150%)",
+          "linear-gradient(115deg,rgba(251,239,249,.16),rgba(235,231,249,.10) 52%,rgba(220,234,248,.08))",
+        backdropFilter: "blur(24px) saturate(125%)",
+        WebkitBackdropFilter: "blur(24px) saturate(125%)",
         boxShadow:
-          "0 8px 26px rgba(0,0,0,.13),inset 0 1px 0 rgba(255,255,255,.35)",
+          "0 8px 26px rgba(0,0,0,.10),inset 0 1px 0 rgba(255,255,255,.12)",
         display: "flex",
         alignItems: "center",
         gap: 24,
@@ -124,7 +124,7 @@ export const FeatureNotification = ({
         style={{
           fontSize: 22,
           lineHeight: 1,
-          color: "rgba(22,20,28,.32)",
+          color: "rgba(255,255,255,.4)",
           alignSelf: "flex-start",
           marginTop: 1,
         }}
